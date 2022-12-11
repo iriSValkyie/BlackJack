@@ -4,13 +4,13 @@ using UnityEngine;
 
 
 namespace BlackJack
-{
-    public struct CardData
+{[System.Serializable]
+    public class CardData
     {
-        public int Number { get; }
-        public CardType Type { get; }
-        public CardColor Color { get; }
-        public CardData(int num,CardType type,CardColor color)
+        public string Number;
+        public CardType Type;
+        public CardColor Color;
+        public CardData(string num,CardType type,CardColor color)
         {
             Number = num;
             Type = type;

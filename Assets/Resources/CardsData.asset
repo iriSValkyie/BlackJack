@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22045e46ad9fec64f99c34faeed59115, type: 3}
+  m_Name: CardsData
+  m_EditorClassIdentifier: 
+  m_Datas:
+  - Number: 2
+    Type: 0
+    Color: 1
+  - Number: 3
+    Type: 0
+    Color: 1
+  - Number: 4
+    Type: 0
+    Color: 1
+  - Number: 5
+    Type: 0
+    Color: 1
+  - Number: 6
+    Type: 0
+    Color: 1
+  - Number: 7
+    Type: 0
+    Color: 1
+  - Number: 8
+    Type: 0
+    Color: 1
+  - Number: 9
+    Type: 0
+    Color: 1
+  - Number: 10
+    Type: 0
+    Color: 1
+  - Number: J
+    Type: 0
+    Color: 1
+  - Number: Q
+    Type: 0
+    Color: 1
+  - Number: K
+    Type: 0
+    Color: 1
+  - Number: A
+    Type: 0
+    Color: 1
+  - Number: 2
+    Type: 1
+    Color: 0
+  - Number: 3
+    Type: 1
+    Color: 0
+  - Number: 4
+    Type: 1
+    Color: 0
+  - Number: 5
+    Type: 1
+    Color: 0
+  - Number: 6
+    Type: 1
+    Color: 0
+  - Number: 7
+    Type: 1
+    Color: 0
+  - Number: 8
+    Type: 1
+    Color: 0
+  - Number: 9
+    Type: 1
+    Color: 0
+  - Number: 10
+    Type: 1
+    Color: 0
+  - Number: J
+    Type: 1
+    Color: 0
+  - Number: Q
+    Type: 1
+    Color: 0
+  - Number: K
+    Type: 1
+    Color: 0
+  - Number: A
+    Type: 1
+    Color: 0
+  - Number: 2
+    Type: 2
+    Color: 0
+  - Number: 3
+    Type: 2
+    Color: 0
+  - Number: 4
+    Type: 2
+    Color: 0
+  - Number: 5
+    Type: 2
+    Color: 0
+  - Number: 6
+    Type: 2
+    Color: 0
+  - Number: 7
+    Type: 2
+    Color: 0
+  - Number: 8
+    Type: 2
+    Color: 0
+  - Number: 9
+    Type: 2
+    Color: 0
+  - Number: 10
+    Type: 2
+    Color: 0
+  - Number: J
+    Type: 2
+    Color: 0
+  - Number: Q
+    Type: 2
+    Color: 0
+  - Number: K
+    Type: 2
+    Color: 0
+  - Number: A
+    Type: 2
+    Color: 0
+  - Number: 2
+    Type: 3
+    Color: 1
+  - Number: 3
+    Type: 3
+    Color: 1
+  - Number: 4
+    Type: 3
+    Color: 1
+  - Number: 5
+    Type: 3
+    Color: 1
+  - Number: 6
+    Type: 3
+    Color: 1
+  - Number: 7
+    Type: 3
+    Color: 1
+  - Number: 8
+    Type: 3
+    Color: 1
+  - Number: 9
+    Type: 3
+    Color: 1
+  - Number: 10
+    Type: 3
+    Color: 1
+  - Number: J
+    Type: 3
+    Color: 1
+  - Number: Q
+    Type: 3
+    Color: 1
+  - Number: K
+    Type: 3
+    Color: 1
+  - Number: A
+    Type: 3
+    Color: 1

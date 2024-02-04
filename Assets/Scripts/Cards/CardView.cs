@@ -4,7 +4,7 @@ using System.Collections;
 namespace BlackJack.Card
 {
     [RequireComponent(typeof(MeshRenderer))]
-    public class CardView : MonoBehaviour,ICardView
+    public class CardView : MonoBehaviour
     {
         [SerializeField]
         private MeshRenderer m_MeshRenderer;
@@ -21,6 +21,10 @@ namespace BlackJack.Card
             mats = Array.Empty<Material>();
             mats[0] = _material;
             m_MeshRenderer.materials = mats;
+        }
+        public void ChanegePosition(Vector3 position)
+        {
+            gameObject.transform.localPosition = position;
         }
     }
 }

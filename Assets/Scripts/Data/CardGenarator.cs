@@ -11,16 +11,18 @@ using UnityEngine;
 
 namespace Data
 {
-    public class CardGeneratorFromResources
+    public class CardGeneratorFromResources: ICardGenerator
     {
         private List<Card> m_Cards = new List<Card>();
         private Dictionary<Card, Material> m_MaterialDict = new Dictionary<Card, Material>();
-        private GameObject m_BaseCardObject = null;
+        private CardView m_CardView = null;
         
         private const int CARD_MAX = 13;
 
         public IReadOnlyDictionary<Card, Material> MaterialDict => m_MaterialDict;
         public IReadOnlyCollection<Card> Cards => m_Cards;
+        public CardView CardView => m_CardView;
+
         public async UniTask<bool> Load()
         {
             bool successLoad = false;
@@ -51,6 +53,11 @@ namespace Data
                     var request = Resources.LoadAsync<Material>($"{basePath}{matName}");
                     await request;
                     Material material = request.asset as Material;
+                    
+                    if (material == null)
+                    {
+                        return false;
+                    }
                     m_MaterialDict.Add(m_Cards[CARD_MAX* cardType + i ],material);
                 }
             }
@@ -68,7 +75,13 @@ namespace Data
             var request = Resources.LoadAsync<GameObject>($"{basePath}{prefabName}");
             await request;
             GameObject obj = request.asset as GameObject;
-            //obj.GetComponent<>();
+            m_CardView = obj.GetComponent<CardView>();
+            
+            if (m_CardView == null)
+            {
+                return false;
+            }
+            
             return true;
         }
 

@@ -1,16 +1,16 @@
 ﻿namespace BlackJack.Consts
 {
-    public static class PrefabConsts
+    public static class AssetConsts
     {
         //カード
         
         //ベースprefab
-        public static string CARD_BASE_PREFAB_PATH = "Prefab/BackColor_{0}";
+        public static string CARD_BASE_PREFAB_PATH = "Prefab/BackColor_{0}/";
 
         public static string CARD_BASE_PREFAB_NAME = "{0}_PlayingCards_Blank_00";
         
         //マテリアル
-        public static string CARD_BASE_MATERIAL_PATH = "Materials/BackColor_{0}";
+        public static string CARD_BASE_MATERIAL_PATH = "Materials/BackColor_{0}/";
         
         public static string CARD_BASE_MATERIAL_NAME = "{0}_PlayingCards_{1}_00";
         

@@ -6,6 +6,7 @@ using BlackJack.Card;
 using BlackJack.Consts;
 using UniRx;
 using Cysharp.Threading.Tasks;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Data
@@ -23,23 +24,31 @@ namespace Data
         public async UniTask<bool> Load()
         {
             bool successLoad = false;
+            int backColorKind = Random.Range(0, AssetConsts.CARD_COLORS.Length);
             
             successLoad = GenerateCardData();
-
-            if (successLoad) successLoad = await LoadCardObjectAsync();
-            
-            if (successLoad) successLoad = await LoadCardMaterialsAsync();
+            if (successLoad) successLoad = await LoadCardObjectAsync(backColorKind);
+            if (successLoad) successLoad = await LoadCardMaterialsAsync(backColorKind);
             
             return successLoad;
         }
 
-        private async UniTask<bool> LoadCardMaterialsAsync()
+        private async UniTask<bool> LoadCardMaterialsAsync(int _backColorKind)
         {
+            string backColor = AssetConsts.CARD_COLORS[_backColorKind];
+            
+            string basePath = AssetConsts.CARD_BASE_MATERIAL_PATH
+                .Replace("{0}",backColor);
+            string baseName = AssetConsts.CARD_BASE_MATERIAL_NAME
+                .Replace("{0}", backColor);
+            
             for (int cardType = 0; cardType < (int)CardType.MAX; cardType++)
             {
                 for (int i = 0; i < CARD_MAX; i++)
                 {
-                    var request = Resources.LoadAsync<Material>("");
+                    string matName = baseName;
+                    matName = matName.Replace("{1}", AssetConsts.CARD_KIND_NAMES[cardType] + (i + 1).ToString("00"));
+                    var request = Resources.LoadAsync<Material>($"{basePath}{matName}");
                     await request;
                     Material material = request.asset as Material;
                     m_MaterialDict.Add(m_Cards[CARD_MAX* cardType + i ],material);
@@ -48,9 +57,15 @@ namespace Data
             return true;
         }
 
-        private async UniTask<bool> LoadCardObjectAsync()
+        private async UniTask<bool> LoadCardObjectAsync(int _backColorKind)
         {
-            var request = Resources.LoadAsync<GameObject>("");
+            string backColor = AssetConsts.CARD_COLORS[_backColorKind];
+            string basePath = AssetConsts.CARD_BASE_PREFAB_PATH
+                .Replace("{0}",backColor);
+            
+            string prefabName = AssetConsts.CARD_BASE_PREFAB_NAME.Replace("{0}",backColor);
+            
+            var request = Resources.LoadAsync<GameObject>($"{basePath}{prefabName}");
             await request;
             GameObject obj = request.asset as GameObject;
             //obj.GetComponent<>();

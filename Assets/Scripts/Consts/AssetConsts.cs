@@ -1,4 +1,4 @@
-﻿namespace BlackJack.Consts
+﻿namespace BlackJack
 {
     public static class AssetConsts
     {

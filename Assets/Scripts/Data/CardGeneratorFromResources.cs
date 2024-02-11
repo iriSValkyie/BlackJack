@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using BlackJack;
-using BlackJack.Card;
-using BlackJack.Consts;
+using BlackJack.Cards;
 using UniRx;
 using Cysharp.Threading.Tasks;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Data
 {
@@ -19,18 +20,36 @@ namespace Data
         
         private const int CARD_MAX = 13;
 
+        private ReactiveProperty<LoadStateType> m_LoadState = new ReactiveProperty<LoadStateType>(LoadStateType.NONE);
+
+        private ReactiveProperty<float> m_LoadProgressRate = new ReactiveProperty<float>(0);
         public IReadOnlyDictionary<Card, Material> MaterialDict => m_MaterialDict;
         public IReadOnlyCollection<Card> Cards => m_Cards;
+
+        public IObservable<LoadStateType> LoadStateEvent => m_LoadState.SkipLatestValueOnSubscribe();
+        
         public CardView CardView => m_CardView;
+        
+        
 
         public async UniTask<bool> Load()
         {
+            m_LoadState.Value = LoadStateType.LOADING;
             bool successLoad = false;
             int backColorKind = Random.Range(0, AssetConsts.CARD_COLORS.Length);
             
             successLoad = GenerateCardData();
             if (successLoad) successLoad = await LoadCardObjectAsync(backColorKind);
             if (successLoad) successLoad = await LoadCardMaterialsAsync(backColorKind);
+
+            if (successLoad)
+            {
+                m_LoadState.Value = LoadStateType.LOADED;
+            }
+            else
+            {
+                m_LoadState.Value = LoadStateType.LOAD_ERROR;
+            }
             
             return successLoad;
         }
@@ -44,7 +63,7 @@ namespace Data
             string baseName = AssetConsts.CARD_BASE_MATERIAL_NAME
                 .Replace("{0}", backColor);
             
-            for (int cardType = 0; cardType < (int)CardType.MAX; cardType++)
+            for (int cardType = 0; cardType < Common.GetEnumCount<CardType>(); cardType++)
             {
                 for (int i = 0; i < CARD_MAX; i++)
                 {
@@ -56,11 +75,17 @@ namespace Data
                     
                     if (material == null)
                     {
+                        Debug.LogError("LoadCardMaterial: Material is Null");
                         return false;
                     }
-                    m_MaterialDict.Add(m_Cards[CARD_MAX* cardType + i ],material);
+
+                    Card targetCard = m_Cards[CARD_MAX * cardType + i];
+                    
+                    Debug.Log($"LoadCardMaterial: Key {targetCard.Type} {targetCard.Number} Value:{material.name}");
+                    m_MaterialDict.Add(targetCard,material);
                 }
             }
+            Debug.Log("LoadCardMaterial: Loaded Success");
             return true;
         }
 
@@ -79,15 +104,16 @@ namespace Data
             
             if (m_CardView == null)
             {
+                Debug.LogError("LoadCardObject: Object is Null");
                 return false;
             }
-            
+            Debug.Log("LoadCardObject: Loaded Success " + m_CardView.name);
             return true;
         }
 
         private bool GenerateCardData()
         {
-            for (int cardType = 0; cardType < (int)CardType.MAX ; cardType++)
+            for (int cardType = 0; cardType < Common.GetEnumCount<CardType>(); cardType++)
             {
                 for (int i = 0; i < CARD_MAX; i++)
                 {
@@ -96,6 +122,7 @@ namespace Data
                     m_Cards.Add(card);
                 }
             }
+            Debug.Log("CardData: Generated Success");
             return true;
         }
     }

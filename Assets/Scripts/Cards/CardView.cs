@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections;
-namespace BlackJack.Card
+namespace BlackJack.Cards
 {
     [RequireComponent(typeof(MeshRenderer))]
     public class CardView : MonoBehaviour
@@ -26,5 +26,6 @@ namespace BlackJack.Card
         {
             gameObject.transform.localPosition = position;
         }
+        
     }
 }

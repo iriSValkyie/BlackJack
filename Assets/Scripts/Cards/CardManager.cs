@@ -6,6 +6,7 @@ using UniRx;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using VContainer;
 
 namespace BlackJack.Cards
 {
@@ -23,8 +24,10 @@ namespace BlackJack.Cards
     private Transform m_InstantiateParent;
 
     public IObservable<LoadStateType> CardLoadStateEvent => m_CardGenerator.LoadStateEvent;
+        
 
-    public CardManager(ICardGenerator _cardGenerator, Transform _instanceParent)
+    [Inject]
+    public void Construct(ICardGenerator _cardGenerator, Transform _instanceParent)
     {
         m_CardGenerator = _cardGenerator;
         //m_CardGenerator.LoadStateEvent.Subscribe(OnChangedLoadState);

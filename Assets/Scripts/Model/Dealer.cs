@@ -1,4 +1,6 @@
 using BlackJack.Cards;
+using BlackJack.UI;
+using VContainer;
 
 namespace BlackJack.Model
 {
@@ -11,12 +13,20 @@ namespace BlackJack.Model
         
         private PersonHands m_PersonHands;//手札クラス(Modelのようなもの)
         
+        private IScoreViewItem m_DealerScore;
         public Dealer(PersonType type)
         {
             Type = type;
             m_PersonHands = new PersonHands();//TODO:引数として渡すようにする
+            
         }
 
+        [Inject]
+        public void Construct(IScoreViewItem _scoreView)
+        {
+            m_DealerScore = _scoreView;
+            m_DealerScore.SetScore(PersonType.DEALER);
+        }
         
 
         public int AddHand(Card _Card)

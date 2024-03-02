@@ -8,6 +8,8 @@ using BlackJack.Cards;
 using BlackJack.Model;
 using Unity.VisualScripting;
 using UniRx;
+using VContainer;
+
 public class FlowManager
 {
     private List<BaseFlow> m_Flows = new List<BaseFlow>();
@@ -19,14 +21,17 @@ public class FlowManager
     private IPerson m_Player;
 
     private IPerson m_Dealer;
-    public FlowManager(ICardManager _cardManager ,IPerson _player,IPerson _dealer)
-    {
+
+    [Inject]
+    public void Construct(CardManager _cardManager ,Player _player,Dealer _dealer)
+    {     
         m_CardManager = _cardManager;
+        m_Player = _player;
+        m_Dealer = _dealer;
         m_NowFlow.SkipLatestValueOnSubscribe().Subscribe(OnChangedFlow);
         CreateFlowInstances();
         
     }
-
     public void StartFlow()
     {
         m_NowFlow.Value = m_Flows[0];

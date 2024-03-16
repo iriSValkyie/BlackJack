@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BlackJack.Cards;
+using BlackJack.Input;
 using BlackJack.Model;
 using UniRx;
 
@@ -20,7 +21,7 @@ namespace  BlackJack.Flows
         
         public FlowType Type { get; set; }
 
-        public abstract void InitFlow(ICardManager _cardManager,IPerson _player,IPerson _dealer);
+        public abstract void InitFlow(ICardManager _cardManager,IPerson _player,IPerson _dealer,IBlackjackInput _input);
 
         public abstract void StartFlow();
         

@@ -1,0 +1,126 @@
+{
+    "name": "KeyBoardBinds",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "6d607710-8ce3-4748-a9da-3966d73a5fea",
+            "actions": [
+                {
+                    "name": "BetUp",
+                    "type": "Button",
+                    "id": "0cddc9f8-9dbe-4ed6-a71b-ac5ead13c30e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BetDown",
+                    "type": "Button",
+                    "id": "a264b623-6d21-4a22-adcf-f7cd9c120c6c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BetMax",
+                    "type": "Button",
+                    "id": "d82c9766-afe4-4217-9cb9-fb1ca695841d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stand",
+                    "type": "Button",
+                    "id": "999a9bff-d2f2-45ea-9d0c-0d08e289b70d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hit",
+                    "type": "Button",
+                    "id": "30154c9c-c621-46fa-8b26-f70c9c523e98",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5427bd77-ac0c-456e-bb91-01080fdf58c9",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "CardControll",
+                    "action": "BetUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3926eca8-93ba-46d1-9cd8-c2fa29937da1",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "CardControll",
+                    "action": "BetDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b34ff43-865e-42d8-8bfb-70ffbe8d2d9c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "CardControll",
+                    "action": "Stand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "55f4a584-5733-4174-90d4-58a3866d1b99",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "CardControll",
+                    "action": "Hit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3fe15bc-c52a-41a5-820d-fbd850cd9161",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "CardControll",
+                    "action": "BetMax",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "CardControll",
+            "bindingGroup": "CardControll",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

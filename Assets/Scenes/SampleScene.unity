@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -816,6 +816,7 @@ MonoBehaviour:
   m_ScoreViewPrefab: {fileID: 8936614893914269965, guid: 095f26c0373ae284ea3c5c56fbb713b6, type: 3}
   m_ScoreParent: {fileID: 1877067988}
   m_CardInstanesParent: {fileID: 2032657399}
+  m_PlayerActionMap: {fileID: -944628639613478452, guid: 0e8eb788a2c4cbd49a9f033a3f2ad090, type: 3}
 --- !u!1001 &736662453
 PrefabInstance:
   m_ObjectHideFlags: 0

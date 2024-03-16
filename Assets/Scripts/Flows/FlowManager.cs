@@ -5,6 +5,7 @@ using BlackJack;
 using UnityEngine;
 using BlackJack.Flows;
 using BlackJack.Cards;
+using BlackJack.Input;
 using BlackJack.Model;
 using Unity.VisualScripting;
 using UniRx;
@@ -22,12 +23,15 @@ public class FlowManager
 
     private IPerson m_Dealer;
 
+    private IBlackjackInput m_Input;
+
     [Inject]
-    public void Construct(CardManager _cardManager ,Player _player,Dealer _dealer)
+    public void Construct(CardManager _cardManager ,Player _player,Dealer _dealer,IBlackjackInput _blackjackInput)
     {     
         m_CardManager = _cardManager;
         m_Player = _player;
         m_Dealer = _dealer;
+        m_Input = _blackjackInput;
         m_NowFlow.SkipLatestValueOnSubscribe().Subscribe(OnChangedFlow);
         CreateFlowInstances();
         
@@ -95,7 +99,7 @@ public class FlowManager
 
     private void OnChangedFlow(BaseFlow nowFlow)
     {
-        nowFlow.InitFlow(m_CardManager,m_Player,m_Dealer);
+        nowFlow.InitFlow(m_CardManager,m_Player,m_Dealer,m_Input);
     }
     
 }

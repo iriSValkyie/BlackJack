@@ -6,6 +6,7 @@ using BlackJack.Model;
 using Data;
 using UnityEngine;
 using UniRx;
+using UnityEngine.InputSystem;
 using VContainer;
 
 public class TestGameManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class TestGameManager : MonoBehaviour
 
     private Player m_Player;
     private Dealer m_Dealer;
-
+    
     [Inject]
     public void Construct(FlowManager _flowManager,CardManager _cardManager,Player _player,Dealer _dealer)
     {

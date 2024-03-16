@@ -1,4 +1,5 @@
 using BlackJack.Cards;
+using BlackJack.Input;
 using BlackJack.Model;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace BlackJack.Flows
         {
         }
 
-        public override void InitFlow(ICardManager cardManager, IPerson player, IPerson dealer)
+        public override void InitFlow(ICardManager cardManager, IPerson player, IPerson dealer,IBlackjackInput _input)
         {
             StartFlow();
         }
